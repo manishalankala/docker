@@ -4,65 +4,65 @@
 
 
 
-#Access given same as root user#
+# Access given same as root user#
 
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 sudo systemctl docker restart
 
-#container (if images is there)#
+# container (if images is there)#
 
 docker run jenkins
 
 
-**Container(its pulls images and run a new container)**
+# Container(its pulls images and run a new container)
 
 docker run -it jenkins
 
-**to run container in background **
+# to run container in background **
 
 docker run -d jenkins
 
-**to list running container **
+# to list running container 
 
 docker ps
 
-**to see last container was started **
+# to see last container was started 
 
 docker ps -l
 
-**to see the ID of conatiner **
+# to see the ID of conatiner **
 
 docker ps -q
 
-**to see logs of container (starting 4 letters is enough)**
+# to see logs of container (starting 4 letters is enough)
 
 docker logs 8fde
 
 
 
-**to see using tail command with conatiner id**
+# to see using tail command with conatiner id**
 docker logs --tail 6 8fde
 
 
 
-**Kill immediately  with conatiner ID**
+# Kill immediately  with conatiner ID
 docker kill 8fdebb8a8b95
 
 
 
-**Stop with Conatiner ID,if conatiner not stops in 10 sec it kills**
+# Stop with Conatiner ID,if conatiner not stops in 10 sec it kills
 docker stop 8fdebb8a8b95
 
 
 
 
-**list runnning container**
+# list runnning container**
 
 docker ps
 
 
-**list of stopped containers**
+# list of stopped containers**
 
 docker ps -a
 
@@ -73,7 +73,7 @@ docker ps -a
 ***Container is encapsulated set of processes running in a read-write copy of filesystem
 *** Docker run starts a conatiner from a given image
 
-****Object -oriented programming****
+# Object -oriented programming
 
 images = classes
 Layers = inheritance
@@ -87,7 +87,7 @@ Self hosted (localhost:5000/wordpress)
 
 
 
-##For Docker build##
+# For Docker build
 
 We can use th edocker pull image using the Dockerfile
 1.Create a directory
@@ -104,7 +104,7 @@ EXPOSE 9000
 
 
 
-####### CMD & Entrypoint ####
+# CMD & Entrypoint
 
 two important dockerfile commands 
 
@@ -114,7 +114,7 @@ two important dockerfile commands
 
 
 
-For Docker push Request ,create a account in docker hub
+# For Docker push Request ,create a account in docker hub
 
 docker tag 
 docker push 
@@ -129,7 +129,7 @@ docker run -d -P jpetazzo/web
 
 
 
-############# Manually alloactaion of port numbers ########
+# Manually alloactaion of port numbers 
 
 docker run -t -p 80:8000 jpetazzo/web
 
@@ -138,8 +138,7 @@ port 80 onlocal host  port 8000 on container
 
 
 
-
-###### container IP ########
+# container IP 
 
 docker inspect conatinerid
 
@@ -162,14 +161,14 @@ docker run -it -d\
 
 
 
-####################Passwordless SSH between containers#######################
+# Passwordless SSH between containers
 
 If you need passwordless authentication, consider copying your SSH public key to the container when running it. I don't recommend creating an image with the public key on it, but rather having the file on the host system that has all public keys authorized.
 
 Let's create a file:
-# mkdir ~/container-ssh-keys
-# vim  ~/container-ssh-keys/authorized_keys
-# chmod 0600 ~/container-ssh-keys/authorized_keys
+#mkdir ~/container-ssh-keys
+#vim  ~/container-ssh-keys/authorized_keys
+#chmod 0600 ~/container-ssh-keys/authorized_keys
 
 Then add your public SSH key to the file, you can add as many as you want. 
 Now when starting the container, map this file to /root/.ssh/authorized_keys on the container, e.g
@@ -185,7 +184,7 @@ copied public key without being prompted for the password.
 
 
 
-Setup DockerUI - a Web Interface for Docker
+# Setup DockerUI - a Web Interface for Docker
 
 Docker maintainers have written an awesome script that can be used to install docker engine in Ubuntu 15.04/14.10/14.04, CentOS 6.x/7, Fedora 22, RHEL 7 and Debian 8.x distributions of linux. 
 This script recognizes the distribution of linux installed in our machine, 
@@ -197,8 +196,9 @@ finally installs docker engine and required dependencies from it. To install doc
 
 
 
-####If you would like to use Docker as a non-root user, you should now consider
-######adding your user to the "docker" group with something like:
+# If you would like to use Docker as a non-root user, you should now consider
+
+# adding your user to the "docker" group with something like:
   
   
   sudo groupadd docker
