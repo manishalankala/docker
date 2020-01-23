@@ -505,3 +505,7 @@ or
 we can run as below
 
 `docker run -itd --name docker02 -h docker02 --privileged -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04`
+
+
+![image](https://user-images.githubusercontent.com/33985509/72988485-a222fe80-3dec-11ea-8cfd-856e007f42f7.png)
+
