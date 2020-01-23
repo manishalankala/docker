@@ -251,13 +251,14 @@ or
 `sudo curl -sSL https://get.docker.com/ | sh`
 
 
+![image](https://user-images.githubusercontent.com/33985509/72986042-9c76ea00-3de7-11ea-8f62-c6cc7709ba35.png)
 
-![image](/uploads/c8e8762de65d3959101375b5db68d017/image.png)
 
 
 if we install as `sudo apt install docker` (Don't not work ) it will miss most packages
 
-![image](/uploads/3225f4e613dd926734cf17be3cd04462/image.png)
+![image](https://user-images.githubusercontent.com/33985509/72986080-af89ba00-3de7-11ea-89fe-206bf8d3cc9a.png)
+
 
 
 
@@ -409,7 +410,7 @@ we choose local ,can be used to manage remote environment and portainer agent
 
 
 
-****Docker in Docker****
+# Docker in Docker #
 
 sudo apt-get install docker-ce (does not work)
 
