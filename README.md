@@ -1,4 +1,4 @@
-# docker
+# Docker
 
 ![image](https://user-images.githubusercontent.com/33985509/59151535-0c8d5700-8a35-11e9-8b9a-7959186806b9.png)
 
@@ -216,3 +216,291 @@ Not working
 
 
 https://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+**Docker**
+
+
+
+
+
+
+ | **Application** | **Link** |  **Notes**  | 
+------------ |------------ | ------------- 
+Docker Engine - Community  (Free Opensource)      | [Reference URL](https://www.docker.com/)  [Reference Docs](https://docs.docker.com/install/)  [Reference Git](https://github.com/portainer/portainer) |  
+Portainer (Free Opensource) UI    |    [Access URL]  [Reference Url](https://www.portainer.io/) | 
+
+
+
+
+Install Docker on Ubuntu 18.04
+
+`sudo apt install docker-ce`
+
+or 
+
+`sudo curl -sSL https://get.docker.com/ | sh`
+
+
+
+![image](/uploads/c8e8762de65d3959101375b5db68d017/image.png)
+
+
+if we install as `sudo apt install docker` (Don't not work ) it will miss most packages
+
+![image](/uploads/3225f4e613dd926734cf17be3cd04462/image.png)
+
+
+
+Using url to download   `https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/`
+
+wget or curl
+
+
+amd64 :
+
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.2.6-3_amd64.deb`    (Optional)
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce-cli_19.03.5~3-0~ubuntu-bionic_amd64.deb`
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce-cli_19.03.5~3-0~ubuntu-bionic_amd64.deb`
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce_19.03.5~3-0~ubuntu-bionic_amd64.deb`
+
+
+
+arm64 :
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/arm64/containerd.io_1.2.6-3_arm64.deb`    (Optional)
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.5~3-0~ubuntu-bionic_arm64.deb`
+
+`https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/arm64/docker-ce_19.03.5~3-0~ubuntu-bionic_arm64.deb`
+
+
+
+Download the file, and make a note of the path where you saved it
+
+`sudo dpkg -i /path/to/package.deb`
+
+
+
+
+Check Docker Status
+
+`sudo systemctl status docker`
+
+`sudo systemctl start docker`
+
+`sudo systemctl enable docker`
+
+
+
+Check Docker Version
+
+`docker --version`
+
+Client Version : 18.09.7
+
+Server Engine Version : 18.09.7
+
+
+
+To pull image from Dockerhub (https://hub.docker.com/)
+
+`sudo docker pull [image_name]`
+
+
+To list images in our local system
+
+`sudo docker images`
+
+
+command to execute our image 
+
+`sudo docker run -i -t [image]`
+
+
+
+Start/Stop/Attach Container
+
+
+`docker start <CONTAINER_ID> or <CONTAINER_NAME>`
+
+
+`docker stop <CONTAINER_ID> or <CONTAINER_NAME>`
+
+
+`docker attach <CONTAINER_ID> or <CONTAINER_NAME>`
+
+
+
+
+Before running container we need to provide any of the below flags
+
+**Docker’s Restart Policy**
+
+
+1.no -  policy is the default restart policy and simply does not restart a container under any circumstance
+
+
+2.on-failure -
+
+```
+Example :sudo docker run -d --name container_name --restart on-failure:5 image:latest
+
+```
+
+3.unless-stopped
+
+```
+Example : sudo docker run -d --name container_name --restart unless-stopped image:latest
+
+```
+
+4.always - If we wanted the container to be restarted regardless of the exit code
+
+```
+Example : sudo docker run -d --name container_name --restart always image:latest
+
+```
+
+
+Adding a restart policy to a container that was already created
+
+
+`docker update --restart=always <CONTAINER_ID> or <CONTAINER_NAME>`
+
+
+
+
+**Access using below link**
+
+[Portainer](http://cis:9000/#/dashboard)
+
+
+Username: admin
+
+Password : password
+
+
+
+
+
+Portainer is a lightweight management UI which allows you to easily manage your different Docker environments 
+
+we choose local ,can be used to manage remote environment and portainer agent
+
+
+![image](/uploads/20874e2572f982232b40744028c4f6a0/image.png)
+
+
+
+
+
+
+****Docker in Docker****
+
+sudo apt-get install docker-ce (does not work)
+
+Following the below process
+
+Update Local Database
+
+`sudo apt-get update`
+
+Download Dependencies
+
+`sudo apt-get install apt-transport-https ca-certificates curl software-properties-common`
+
+
+```
+apt-transport-https: Allows the package manager to transfer files and data over https
+
+ca-certificates: Allows the system (and web browser) to check security certificates
+
+curl: This is a tool for transferring data
+
+software-properties-common: Adds scripts for managing software
+
+```
+
+To ensure that the software you’re installing is authentic
+
+`curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –`
+
+ Install the Docker Repository
+
+`sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable" `
+
+
+update repo
+
+`sudo apt-get update`
+
+Install Latest Version of Docker
+
+`sudo apt-get install docker-ce`
+
+
+
+**Commands:**
+
+
+Command | Comments
+------- | --------
+`sudo docker ps`
+`sudo docker ps -a`
+`docker run -itd --name portainer -h portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock --restart on-failure:2 portainer/portainer:latest`
+`docker rm $(docker ps -a -f status=exited -q)`
+`docker rmi $(docker images -a -q)`
+`docker volume rm $(docker volume ls -f dangling=true -q)`
+
+
+
+docker run -itd --name docker0 -h docker0 ubuntu:18.04
+
+apt update 
+
+apt install sudo vim apt-utils net-utils nmap   
+
+sudo curl -sSL https://get.docker.com/ | sh
+
+service docker start (it won't start properly)
+
+sudo dockerd
+
+
+![image](/uploads/b406271c221aa46614410cd64dd8e18e/image.png)
+
+
+`docker run -itd --name docker01 -h docker01 --privileged ubuntu:18.04`
+
+
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+
+service docker start
+
+service docker stop
+
+service docker restart
+
+service docker status
+
+
+or 
+
+we can run as below
+
+d`ocker run -itd --name docker02 -h docker02 --privileged -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04`
