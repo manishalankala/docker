@@ -482,7 +482,7 @@ service docker start (it won't start properly)
 sudo dockerd
 
 
-![image](/uploads/b406271c221aa46614410cd64dd8e18e/image.png)
+![image](https://user-images.githubusercontent.com/33985509/72986134-cb8d5b80-3de7-11ea-9f8b-f56619ac6e9a.png)
 
 
 `docker run -itd --name docker01 -h docker01 --privileged ubuntu:18.04`
@@ -504,4 +504,4 @@ or
 
 we can run as below
 
-d`ocker run -itd --name docker02 -h docker02 --privileged -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04`
+`docker run -itd --name docker02 -h docker02 --privileged -v /var/run/docker.sock:/var/run/docker.sock ubuntu:18.04`
