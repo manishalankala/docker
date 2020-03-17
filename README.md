@@ -4,15 +4,19 @@
 
 
 
+Contents
+| -------- |
+Orchestration (25%) |
+Image Creation, Management, and Registry (20%) |
+Installation and Configuration (15%) |
+Networking (15%) |
+Security (15%) |
+Storage and Volumes (10%) |
+Orchestration (25%) |
 
-Orchestration (25%)
-Image Creation, Management, and Registry (20%)
-Installation and Configuration (15%)
-Networking (15%)
-Security (15%)
-Storage and Volumes (10%)
-Orchestration (25%)
-Which command do you use to create a new swarm?
+
+
+1.Which command do you use to create a new swarm?
 docker swarm init --advertise-addr <MANAGER-IP>
 2. What is this flag --advertise-addr for?
 This flag configures the IP address for the manager node and The other nodes in the swarm must be able to access the manager at the IP address.
